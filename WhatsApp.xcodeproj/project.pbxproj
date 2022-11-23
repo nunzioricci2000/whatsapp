@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD3271B8292EA1D60015C12F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3271B7292EA1D60015C12F /* Assets.xcassets */; };
 		CD71E26D292E718200F775FD /* WhatsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E26C292E718200F775FD /* WhatsAppApp.swift */; };
 		CD71E26F292E718200F775FD /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E26E292E718200F775FD /* ViewRouter.swift */; };
-		CD71E271292E718300F775FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD71E270292E718300F775FD /* Assets.xcassets */; };
 		CD71E274292E718300F775FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD71E273292E718300F775FD /* Preview Assets.xcassets */; };
 		CD71E27B292E71C700F775FD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E27A292E71C700F775FD /* Model.swift */; };
-		CD71E27E292E71F200F775FD /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E27D292E71F200F775FD /* StateView.swift */; };
-		CD71E283292E748500F775FD /* StateCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E282292E748500F775FD /* StateCaruselView.swift */; };
+		CD71E27E292E71F200F775FD /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E27D292E71F200F775FD /* StatusView.swift */; };
+		CD71E283292E748500F775FD /* StatusCaruselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E282292E748500F775FD /* StatusCaruselView.swift */; };
+		CD71E288292E7BF800F775FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E287292E7BF800F775FD /* User.swift */; };
+		CD71E28A292E7EFF00F775FD /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E289292E7EFF00F775FD /* Status.swift */; };
+		CD71E28C292E9F1400F775FD /* WAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E28B292E9F1400F775FD /* WAView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD3271B7292EA1D60015C12F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD71E269292E718200F775FD /* WhatsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD71E26C292E718200F775FD /* WhatsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppApp.swift; sourceTree = "<group>"; };
 		CD71E26E292E718200F775FD /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
-		CD71E270292E718300F775FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD71E273292E718300F775FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD71E27A292E71C700F775FD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		CD71E27D292E71F200F775FD /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
-		CD71E282292E748500F775FD /* StateCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCaruselView.swift; sourceTree = "<group>"; };
+		CD71E27D292E71F200F775FD /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		CD71E282292E748500F775FD /* StatusCaruselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCaruselView.swift; sourceTree = "<group>"; };
+		CD71E287292E7BF800F775FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CD71E289292E7EFF00F775FD /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		CD71E28B292E9F1400F775FD /* WAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,14 @@
 		CD71E26B292E718200F775FD /* WhatsApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD71E286292E7BDB00F775FD /* DataHandling */,
 				CD71E26C292E718200F775FD /* WhatsAppApp.swift */,
+				CD71E28B292E9F1400F775FD /* WAView.swift */,
 				CD71E27A292E71C700F775FD /* Model.swift */,
 				CD71E26E292E718200F775FD /* ViewRouter.swift */,
+				CD3271B7292EA1D60015C12F /* Assets.xcassets */,
 				CD71E27C292E71D300F775FD /* State */,
-				CD71E27F292E744600F775FD /* StateCarusel */,
-				CD71E270292E718300F775FD /* Assets.xcassets */,
+				CD71E27F292E744600F775FD /* StatusCarusel */,
 				CD71E272292E718300F775FD /* Preview Content */,
 			);
 			path = WhatsApp;
@@ -79,17 +87,26 @@
 		CD71E27C292E71D300F775FD /* State */ = {
 			isa = PBXGroup;
 			children = (
-				CD71E27D292E71F200F775FD /* StateView.swift */,
+				CD71E27D292E71F200F775FD /* StatusView.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
 		};
-		CD71E27F292E744600F775FD /* StateCarusel */ = {
+		CD71E27F292E744600F775FD /* StatusCarusel */ = {
 			isa = PBXGroup;
 			children = (
-				CD71E282292E748500F775FD /* StateCaruselView.swift */,
+				CD71E282292E748500F775FD /* StatusCaruselView.swift */,
 			);
-			path = StateCarusel;
+			path = StatusCarusel;
+			sourceTree = "<group>";
+		};
+		CD71E286292E7BDB00F775FD /* DataHandling */ = {
+			isa = PBXGroup;
+			children = (
+				CD71E287292E7BF800F775FD /* User.swift */,
+				CD71E289292E7EFF00F775FD /* Status.swift */,
+			);
+			path = DataHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD71E274292E718300F775FD /* Preview Assets.xcassets in Resources */,
-				CD71E271292E718300F775FD /* Assets.xcassets in Resources */,
+				CD3271B8292EA1D60015C12F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,11 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD71E283292E748500F775FD /* StateCaruselView.swift in Sources */,
+				CD71E283292E748500F775FD /* StatusCaruselView.swift in Sources */,
 				CD71E27B292E71C700F775FD /* Model.swift in Sources */,
+				CD71E28C292E9F1400F775FD /* WAView.swift in Sources */,
+				CD71E28A292E7EFF00F775FD /* Status.swift in Sources */,
 				CD71E26F292E718200F775FD /* ViewRouter.swift in Sources */,
-				CD71E27E292E71F200F775FD /* StateView.swift in Sources */,
+				CD71E27E292E71F200F775FD /* StatusView.swift in Sources */,
 				CD71E26D292E718200F775FD /* WhatsAppApp.swift in Sources */,
+				CD71E288292E7BF800F775FD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
