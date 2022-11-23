@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StatusView: WAView {
     @ObservedObject var model: Model = .init()
+    @Namespace var animation
     
     var body: some View {
         NavigationStack {
@@ -21,14 +22,16 @@ struct StatusView: WAView {
                 }
                 Section("Recent updates") {
                     ForEach (model.userList, id: \.id) { user in
-                        Text(user.name)
+                        Thumnail(of: user)
                     }
                 }
                 Section("Viewed updates") {
                     
                 }
-            }.navigationTitle("Status")
-                .searchable(text: $model.statusSerchText)
+            }
+            .listStyle(.grouped)
+            .navigationTitle("Status")
+            .searchable(text: $model.statusSerchText)
         }
     }
 }

@@ -9,22 +9,33 @@ import SwiftUI
 
 struct ViewRouter: WAView {
     @StateObject var model: Model = .init()
+    @Namespace var animation
     
     var body: some View {
         ZStack {
-            TabView(selection: $model.currentTab) {
-                StatusView(model: model)
-                    .tag(Tab.status)
-                    .tabItem {
-                        Label("States", systemImage: "circle.dashed")
+            Group {
+                if model.overlyingPage == nil {
+                    TabView(selection: $model.currentTab) {
+                        StatusView(model: model)
+                            .tag(Tab.status)
+                            .tabItem {
+                                Label("States", systemImage: "circle.dashed")
+                            }
                     }
-            }
-            switch model.overlyingPage {
-            case .statusCarusel:
-                StatusCaruselView()
-            case nil:
-                EmptyView()
-            }
+                }
+            }.zIndex(0)
+            Group {
+                switch model.overlyingPage {
+                case .statusCarusel:
+                    StatusCaruselView(model: model)
+                case nil:
+                    EmptyView()
+                }
+            }.zIndex(1)
+        }
+        .onAppear {
+            model.animation = animation
+            _ = model.isPreview
         }
     }
 }
