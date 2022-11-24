@@ -17,7 +17,8 @@ class Model: ObservableObject {
         return isPreview
     }()
     
-    private func previewSetup() {
+     
+    func previewSetup() {
         self.userList.append(User("Nunzio"))
         self.userList.append(User("Vladimiro"))
         self.userList.append(User("Marina"))
@@ -39,10 +40,14 @@ class Model: ObservableObject {
     @Published var currentTab: Tab = .status
     @Published var overlyingPage: Overlying? = nil
     @Published var animation: Namespace.ID? = nil
+    @Published var displayOverlay: Bool = false
     
     // Data
     @Published var userList: [User] = []
     @Published var statusList: [Status] = []
+    var myAccount: User? {
+        userList.first
+    }
     
     func isStatus(_ status: Status, of user: User) -> Bool {
         status.ownerId == user.id
@@ -115,13 +120,53 @@ class Model: ObservableObject {
     @Published var statusSerchText = ""
     @Published var userIndex = 0
     @Published var statusIndex = 0
+    @Published var stateDuration: TimeInterval = 3.0
+    @Published var caruselProgress: Double = 0
+    @Published var isPaused = false
+    @Published var timer: Timer? = nil
+    
+    func startStory() {
+        timer?.invalidate()
+        caruselProgress = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            withAnimation(.linear(duration: 0.1)) {
+                if !self.isPaused {
+                    self.caruselProgress += 0.1
+                }
+                if self.caruselProgress >= self.stateDuration {
+                    timer.invalidate()
+                    self.nextStatus()
+                    self.startStory()
+                }
+            }
+        }
+    }
+    
+    func searchingFor(user: User) -> Bool {
+        guard statusSerchText != "" else {
+            return true
+        }
+        return user.name.contains(statusSerchText)
+    }
     
     func showInRecentUpdates(_ user: User) -> Bool {
-        firstUnviewedStatus(of: user) != nil
+        firstUnviewedStatus(of: user) != nil && user != myAccount
+    }
+    
+    var showRecentUpdates: Bool {
+        !userList.filter { user in
+            showInRecentUpdates(user)
+        }.isEmpty
     }
     
     func showInViewedUpdates(_ user: User) -> Bool {
-        !showInRecentUpdates(user) && (firstStatus(of: user) != nil)
+        !showInRecentUpdates(user) && (firstStatus(of: user) != nil)  && user != myAccount
+    }
+    
+    var showViewedUpdates: Bool {
+        !userList.filter { user in
+            showInViewedUpdates(user)
+        }.isEmpty
     }
     
     func statusShownInThumnail(of user: User) -> Status? {
@@ -133,7 +178,9 @@ class Model: ObservableObject {
     }
     
     var currentStatusInCarusel: Status {
-        statusList(of: currentUserInCarusel)[statusIndex]
+        let status = statusList(of: currentUserInCarusel)[statusIndex]
+        status.viewed = true
+        return status
     }
     
     func selectStatus(of user: User) {
@@ -144,17 +191,31 @@ class Model: ObservableObject {
     func nextStatus() {
         statusIndex += 1
         if statusIndex >= statusList(of: currentUserInCarusel).count {
-            statusIndex = 0
             userIndex += 1
             if userIndex >= userList.count {
                 userIndex = 0
             }
+            statusIndex = 0
         }
+        caruselProgress = 0
+    }
+    
+    func previousStatus() {
+        statusIndex -= 1
+        if statusIndex < 0 {
+            userIndex -= 1
+            if userIndex < 0 {
+                userIndex = userList.count - 1
+            }
+            statusIndex = statusList(of: currentUserInCarusel).count - 1
+        }
+        caruselProgress = 0
     }
     
     func inCarusel(_ user: User) -> Bool {
         return (overlyingPage == .statusCarusel) && (currentUserInCarusel.name == user.name)
     }
+    
 }
 
 enum Tab {

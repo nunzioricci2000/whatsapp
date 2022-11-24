@@ -51,7 +51,6 @@ extension StatusView {
     fileprivate func SingleStoryCircle(viewed: Bool) -> some View {
         Circle()
             .stroke(viewed ? .secondary : Color.accentColor, style: .init(lineWidth: 3))
-        
     }
     
     func StoryCircle(storyNumber: Int, viewedStories: Int) -> some View {

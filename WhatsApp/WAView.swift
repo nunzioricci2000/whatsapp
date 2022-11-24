@@ -12,6 +12,8 @@ protocol WAView: View {
 }
 
 extension WAView {
+
+    @MainActor
     var preview: Self {
         _ = model.isPreview
         return self

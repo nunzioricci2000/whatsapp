@@ -14,30 +14,46 @@ struct StatusView: WAView {
     var body: some View {
         NavigationStack {
             List {
-                Section {
-                    Text("prova")
-                        .onTapGesture {
-                            model.overlyingPage = .statusCarusel
-                        }
-                }
-                Section("Recent updates") {
-                    ForEach (model.userList, id: \.id) { user in
-                        Thumnail(of: user)
+                if let myAccount = model.myAccount, model.statusSerchText == "" {
+                    Section {
+                        Thumnail(of: myAccount)
                     }
                 }
-                Section("Viewed updates") {
-                    
+                if model.showRecentUpdates {
+                    Section("Recent updates") {
+                        ForEach (model.userList, id: \.id) { user in
+                            if model.showInRecentUpdates(user), model.searchingFor(user: user) {
+                                Thumnail(of: user)
+                            }
+                        }
+                    }
+                }
+                if model.showViewedUpdates {
+                    Section("Viewed updates") {
+                        ForEach (model.userList, id: \.id) { user in
+                            if model.showInViewedUpdates(user), model.searchingFor(user: user) {
+                                Thumnail(of: user)
+                            }
+                        }
+                    }
                 }
             }
             .listStyle(.grouped)
             .navigationTitle("Status")
             .searchable(text: $model.statusSerchText)
+            .toolbar {
+                Button("New Status") {
+                    
+                }
+            }
         }
     }
 }
 
 struct StatusView_Previews: PreviewProvider {
     static var previews: some View {
-        StatusView().preview
+        VStack {
+            StatusView().preview
+        }
     }
 }

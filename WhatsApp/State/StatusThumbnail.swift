@@ -14,20 +14,17 @@ extension StatusView {
         HStack {
             ZStack {
                 StoryCircle(storyNumber: model.statesCount(of: user), viewedStories: model.statesViewedCount(of: user))
-                Image(uiImage: model.statusShownInThumnail(of: user)?.image ?? UIImage(named: "yotobi 8")!)
-                    .resizable()
-                    .matchedGeometryEffect(id: "\(user.name)-image", in: model.animation ?? animation)
-                    .scaledToFill()
-                    .mask {
-                        Circle().matchedGeometryEffect(id: "\(user.name)-circle", in: model.animation ?? animation)
-                    }
-                    .padding(3.5)
+                ThumbnailImage(of: user)
             }.frame(width: height)
-            Text(user.name)
-                .font(.system(size: 20))
-                .fontWeight(.semibold)
-                .fontWidth(.standard)
-                .padding()
+            VStack (alignment: .leading) {
+                Text(user.name)
+                    .font(.system(size: 20))
+                    .fontWeight(.semibold)
+                    .fontWidth(.standard)
+                Text(model.statusList(of: user).last?.formattedTimeElapsed ?? "")
+                    .foregroundColor(.gray)
+            }
+            .padding()
             Spacer()
         }
         .frame(width: .infinity, height: 60)
@@ -37,6 +34,22 @@ extension StatusView {
                 model.overlyingPage = .statusCarusel
             }
         }
+    }
+    
+    func ThumbnailImage(of user: User) -> some View {
+        Group {
+            //if !model.inCarusel(user) {
+                Image(uiImage: model.statusShownInThumnail(of: user)?.image ?? UIImage(named: "yotobi 8")!)
+                    .resizable()
+                    .matchedGeometryEffect(id: "\(user.name)-image", in: model.animation ?? animation)
+                    .scaledToFill()
+            //}
+        }.mask {
+            //if !model.inCarusel(user) {
+                Circle().matchedGeometryEffect(id: "\(user.name)-circle", in: model.animation ?? animation)
+            //}
+        }
+        .padding(3.5)
     }
 }
 

@@ -10,6 +10,7 @@
 		CD3271B8292EA1D60015C12F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3271B7292EA1D60015C12F /* Assets.xcassets */; };
 		CD3271BA292EAF780015C12F /* StatusThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3271B9292EAF780015C12F /* StatusThumbnail.swift */; };
 		CD3271BC292EB0870015C12F /* StoryCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3271BB292EB0870015C12F /* StoryCircle.swift */; };
+		CD3271C0292FAE4E0015C12F /* StoryCarouselProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3271BF292FAE4E0015C12F /* StoryCarouselProgressBar.swift */; };
 		CD71E26D292E718200F775FD /* WhatsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E26C292E718200F775FD /* WhatsAppApp.swift */; };
 		CD71E26F292E718200F775FD /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71E26E292E718200F775FD /* ViewRouter.swift */; };
 		CD71E274292E718300F775FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD71E273292E718300F775FD /* Preview Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		CD3271B7292EA1D60015C12F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD3271B9292EAF780015C12F /* StatusThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusThumbnail.swift; sourceTree = "<group>"; };
 		CD3271BB292EB0870015C12F /* StoryCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCircle.swift; sourceTree = "<group>"; };
+		CD3271BF292FAE4E0015C12F /* StoryCarouselProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCarouselProgressBar.swift; sourceTree = "<group>"; };
 		CD71E269292E718200F775FD /* WhatsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD71E26C292E718200F775FD /* WhatsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppApp.swift; sourceTree = "<group>"; };
 		CD71E26E292E718200F775FD /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				CD71E282292E748500F775FD /* StatusCaruselView.swift */,
+				CD3271BF292FAE4E0015C12F /* StoryCarouselProgressBar.swift */,
 			);
 			path = StatusCarusel;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				CD71E283292E748500F775FD /* StatusCaruselView.swift in Sources */,
 				CD71E27B292E71C700F775FD /* Model.swift in Sources */,
+				CD3271C0292FAE4E0015C12F /* StoryCarouselProgressBar.swift in Sources */,
 				CD71E28C292E9F1400F775FD /* WAView.swift in Sources */,
 				CD71E28A292E7EFF00F775FD /* Status.swift in Sources */,
 				CD71E26F292E718200F775FD /* ViewRouter.swift in Sources */,
